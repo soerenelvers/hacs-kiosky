@@ -1,0 +1,53 @@
+{
+  "title": "Kiosky",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect to Kiosky",
+        "description": "Enter the external API base URL shown in Kiosky and a dedicated Kiosky API key (not a GitHub token).",
+        "data": {
+          "name": "Name",
+          "url": "External API base URL",
+          "api_key": "Kiosky API key"
+        }
+      },
+      "reconfigure": {
+        "title": "Reconfigure Kiosky",
+        "description": "Update the name or API key. To change the installation URL, remove this integration and add it again.",
+        "data": {
+          "name": "Name",
+          "url": "External API base URL",
+          "api_key": "Kiosky API key"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Replace Kiosky API key",
+        "description": "Create a new API key in Kiosky and enter it here.",
+        "data": {
+          "api_key": "Kiosky API key"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "The Kiosky API key is invalid, revoked, or missing.",
+      "invalid_url": "Enter a valid HTTP(S) API base URL without credentials.",
+      "cannot_connect": "Cannot connect. Check the external API URL, TLS certificate, and Kiosky version (3.3.1 or newer)."
+    },
+    "abort": {
+      "already_configured": "This Kiosky installation is already configured.",
+      "reauth_successful": "API key updated successfully.",
+      "reconfigure_successful": "Configuration updated.",
+      "unique_id_mismatch": "The installation URL cannot be changed. Remove this entry and add the new installation."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Polling interval",
+        "data": {
+          "scan_interval": "Polling interval (seconds, 10–3600)"
+        }
+      }
+    }
+  }
+}

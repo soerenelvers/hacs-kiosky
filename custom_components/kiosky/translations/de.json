@@ -1,0 +1,53 @@
+{
+  "title": "Kiosky",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Mit Kiosky verbinden",
+        "description": "Externe API-Basisadresse aus Kiosky und einen eigenen Kiosky-API-Schlüssel eingeben (kein GitHub-Token).",
+        "data": {
+          "name": "Name",
+          "url": "Externe API-Basisadresse",
+          "api_key": "Kiosky-API-Schlüssel"
+        }
+      },
+      "reconfigure": {
+        "title": "Kiosky neu konfigurieren",
+        "description": "Name oder API-Schlüssel ändern. Für eine andere Installationsadresse diese Integration entfernen und erneut hinzufügen.",
+        "data": {
+          "name": "Name",
+          "url": "Externe API-Basisadresse",
+          "api_key": "Kiosky-API-Schlüssel"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Kiosky-API-Schlüssel ersetzen",
+        "description": "Einen neuen API-Zugang in Kiosky anlegen und den Schlüssel hier eingeben.",
+        "data": {
+          "api_key": "Kiosky-API-Schlüssel"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Der Kiosky-API-Schlüssel ist ungültig, widerrufen oder fehlt.",
+      "invalid_url": "Eine gültige HTTP(S)-API-Basisadresse ohne Zugangsdaten eingeben.",
+      "cannot_connect": "Keine Verbindung. Externe API-Adresse, TLS-Zertifikat und Kiosky-Version (ab 3.3.1) prüfen."
+    },
+    "abort": {
+      "already_configured": "Diese Kiosky-Installation ist bereits eingerichtet.",
+      "reauth_successful": "API-Schlüssel aktualisiert.",
+      "reconfigure_successful": "Konfiguration aktualisiert.",
+      "unique_id_mismatch": "Für eine andere Installationsadresse den Eintrag entfernen und neu anlegen."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Abfrageintervall",
+        "data": {
+          "scan_interval": "Abfrageintervall (Sekunden, 10–3600)"
+        }
+      }
+    }
+  }
+}

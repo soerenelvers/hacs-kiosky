@@ -1,0 +1,134 @@
+assign_content:
+  name: Assign channel or slide
+  description: Assign content directly to a Kiosky target. Overrides the normal schedule until cleared or expired.
+  fields:
+    config_entry_id: &entry
+      name: Kiosky installation
+      description: Optional with one installation; required with multiple installations.
+      selector:
+        config_entry:
+          integration: kiosky
+    target_type:
+      name: Target type
+      required: true
+      selector:
+        select:
+          options: [display, group, matrix, location, global]
+    target_id:
+      name: Target ID
+      description: Use the Kiosky resource ID; for the global target use global.
+      required: true
+      selector:
+        text:
+    content_type:
+      name: Content type
+      required: true
+      selector:
+        select:
+          options: [channel, slide]
+    content_id:
+      name: Content ID
+      required: true
+      selector:
+        text:
+    priority:
+      name: Priority
+      default: 100
+      selector:
+        number:
+          min: 0
+          max: 1000
+          mode: box
+    starts_at: &starts
+      name: Starts at
+      description: Optional ISO 8601 timestamp including timezone.
+      selector:
+        text:
+    expires_at: &expires
+      name: Expires at
+      description: Optional ISO 8601 timestamp including timezone.
+      selector:
+        text:
+clear_assignments:
+  name: Clear external assignments
+  description: Remove external assignments for the targets. Preserves active warnings. Group assignments may still affect individual displays.
+  fields:
+    config_entry_id: *entry
+    targets: &targets
+      name: Kiosky targets
+      description: 'List of target objects, for example [{"type": "group", "id": "GROUP_ID"}].'
+      required: true
+      selector:
+        object:
+execute_preset:
+  name: Execute preset
+  description: Run a preset with its configured targets, or override targets and content explicitly.
+  fields:
+    config_entry_id: *entry
+    preset_id:
+      name: Preset ID
+      required: true
+      selector:
+        text:
+    targets:
+      name: Override targets
+      description: Optional list of objects with type and id.
+      selector:
+        object:
+    channel_id:
+      name: Override channel ID
+      selector:
+        text:
+    warning_type:
+      name: Override warning type
+      selector:
+        select:
+          options: [evacuation, fire, severe_weather, security, medical, technical, information, custom]
+    title:
+      name: Override warning title
+      selector:
+        text:
+    instructions:
+      name: Override warning instructions
+      selector:
+        text:
+          multiline: true
+    end_emergency:
+      name: End active emergency on reset
+      selector:
+        boolean:
+    starts_at: *starts
+    expires_at: *expires
+activate_emergency:
+  name: Activate warning
+  description: Show a warning on the selected targets. Replaces the currently active Kiosky emergency warning.
+  fields:
+    config_entry_id: *entry
+    targets: *targets
+    warning_type:
+      name: Warning type
+      required: true
+      selector:
+        select:
+          options: [evacuation, fire, severe_weather, security, medical, technical, information, custom]
+    title:
+      name: Title
+      required: true
+      selector:
+        text:
+    instructions:
+      name: Instructions
+      required: true
+      selector:
+        text:
+          multiline: true
+end_emergency:
+  name: End active warning
+  description: End the active Kiosky emergency warning system-wide.
+  fields:
+    config_entry_id: *entry
+refresh:
+  name: Refresh
+  description: Immediately retrieve the current Kiosky resources and status.
+  fields:
+    config_entry_id: *entry

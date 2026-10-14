@@ -2,6 +2,10 @@
 
 Home-Assistant-Integration für die **Kiosky External Control API**, installierbar über HACS als benutzerdefiniertes Repository.
 
+Die [vollständige Kiosky-Einrichtungsanleitung](docs/kiosky-setup.md) erklärt zusätzlich
+Updates und GitHub-Tokens, transparente Lauftexte, native CMS-Medien sowie die
+Einrichtung der externen API. Sie unterscheidet Updatezugang und Steuerzugang.
+
 ## Voraussetzungen
 
 - Home Assistant **2026.3.0 oder neuer**, HACS und Kiosky **3.3.1 oder neuer**.

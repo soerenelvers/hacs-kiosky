@@ -2,6 +2,17 @@
 
 Stand: 14. Oktober 2026. Die beschriebenen Funktionen sind in **Kiosky 3.3.1** enthalten; transparente Element-Hintergründe und native CMS-Medien gibt es ab **3.3.0**. Die eigenständige Home-Assistant-Integration hat die Version **1.0.0**.
 
+## Paketnamen neuer Releases
+
+Neue Pakete heißen `kiosky-app-VERSION.zip`, `kiosky-wordpress-VERSION.zip`
+und `kiosky_VERSION.zip`. Ältere veröffentlichte Releases können abweichende
+Dateinamen verwenden; die tatsächlichen Downloads und Prüfsummen des gewählten
+Releases sind maßgeblich. Bei älteren WordPress-Installationen vor dem ersten
+kanonischen Paket den bisherigen Pluginordner nach Sicherung und Deaktivierung
+in `kiosky` umbenennen, das neue Paket ersetzen und erneut aktivieren.
+Nicht deinstallieren oder eine zweite Pluginkopie aktivieren. Bei älteren
+Standalone-/CMS-Updatern ist der erste Wechsel gegebenenfalls manuell nötig.
+
 ## 1. Installation und bestehende Installationen aktualisieren
 
 WordPress und TYPO3 enthalten ihre eigene Kiosky-Laufzeit. Für diese Varianten wird kein zusätzlicher Kiosky-Standalone-Server benötigt.
@@ -15,7 +26,7 @@ Vor einem Update die Datenbank und Dateien sichern; bei WordPress insbesondere `
 3. Die angebotene Version installieren. Alternativ unter **WordPress → Dashboard → Aktualisierungen → Erneut prüfen** suchen und Kiosky aktualisieren.
 4. Nach dem Update im Kiosky-Updatebereich die installierte Version kontrollieren.
 
-Für eine Installation ohne funktionierenden Updater das WordPress-Release-ZIP `kioski-wordpress-3.3.1.zip` unter **Plugins → Installieren → Plugin hochladen** hochladen und das vorhandene Plugin ersetzen. Das Plugin dafür nicht vorher löschen oder deinstallieren.
+Für eine Installation ohne funktionierenden Updater das WordPress-Release-ZIP `kiosky-wordpress-VERSION.zip` unter **Plugins → Installieren → Plugin hochladen** hochladen und das vorhandene Plugin ersetzen. Das Plugin dafür nicht vorher löschen oder deinstallieren.
 
 ### Welchen GitHub-Token brauche ich?
 
@@ -49,7 +60,7 @@ Quelle zum WordPress-Zeitplan: https://developer.wordpress.org/reference/functio
 
 ### TYPO3
 
-- **Classic Mode:** Das angebotene `kioski_3.3.1.zip` im Extension Manager hochladen. Kiosky prüft Updates, überschreibt im Classic Mode aber keine laufenden PHP-Dateien per Backend-Updateaktion.
+- **Classic Mode:** Das angebotene `kiosky_VERSION.zip` im Extension Manager hochladen. Kiosky prüft Updates, überschreibt im Classic Mode aber keine laufenden PHP-Dateien per Backend-Updateaktion.
 - **Composer:** Das Distributionsrepository konfigurieren, Lesetoken in Composer `auth.json` beziehungsweise `COMPOSER_AUTH` hinterlegen und `casesound/kiosky` aktualisieren. Die TYPO3-Extension-Konfiguration `updateAccessToken` kann den Token für den Backend-Updateweg bereitstellen. Das Backend bietet die Installation erst an, wenn der genaue Stable-Tag auflösbar ist.
 - Nach einem Composer-Update `vendor/bin/typo3 extension:setup` und `vendor/bin/typo3 cache:flush` ausführen, sofern der gewählte Updateweg dies nicht bereits übernimmt.
 - Das Öffnen des Kiosky-Backends erneuert fehlende oder mehr als 24 Stunden alte Updateprüfungen. Eine zusätzliche regelmäßige Prüfung kann über den Scheduler und `kiosky:update:check` eingerichtet werden.
